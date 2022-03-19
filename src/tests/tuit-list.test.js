@@ -1,20 +1,18 @@
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllTuits} from "../services/tuits-service";
-import axios from "axios";
 import Tuits from "../components/tuits/index";
 
-// const MOCKED_USERS = [
-//   "alice", "bob", "charlie"
-// ];
 const MOCKED_USERS = [
-  {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', _id: "1"},
-  {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com', _id: "2"},
-]
+  {username: "alice", _id: "1"},
+  {username: "bob", _id: "2"},
+  {username: "charlie", _id: "3"}
+];
+
 const MOCKED_TUITS = [
-  {tuit: "alice's tuit", _id: "123", postedBy: "1"},
-  {tuit: "bob's tuit", _id: "234", postedBy: "2"},
-  {tuit: "charlie's tuit", _id: "345", postedBy: "1"}
+  {tuit: "alice's tuit", _id: "123", postedBy: MOCKED_USERS[0]},
+  {tuit: "bob's tuit", _id: "234", postedBy: MOCKED_USERS[1]},
+  {tuit: "charlie's tuit", _id: "345", postedBy: MOCKED_USERS[2]}
 ];
 
 test('tuit list renders static tuit array', () => {
@@ -34,5 +32,4 @@ test('tuit list renders async', async () => {
     </HashRouter>);
   const linkElement = screen.getByText(/second/i);
   expect(linkElement).toBeInTheDocument();
-  // create mocked users then use these ids to create mocked tuits
 })

@@ -6,22 +6,16 @@ import axios from "axios";
 
 jest.mock('axios');
 
-// const MOCKED_USERS = [
-//     {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', _id: "123"},
-//     {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com', _id: "234"},
-// ]
-// const MOCKED_USERS = [
-//   "alice", "bob", "charlie"
-// ];
-
-// const MOCKED_TUITS = [
-//   "alice's tuit", "bob's tuit", "charlie's tuit"
-// ];
+const MOCKED_USERS = [
+  {username: "alice", _id: "1"},
+  {username: "bob", _id: "2"},
+  {username: "charlie", _id: "3"}
+];
 
 const MOCKED_TUITS = [
-  {tuit: "alice's tuit", _id: "123"},
-  {tuit: "bob's tuit", _id: "234"},
-  {tuit: "charlie's tuit", _id: "345"}
+  {tuit: "alice's tuit", _id: "123", postedBy: MOCKED_USERS[0]},
+  {tuit: "bob's tuit", _id: "234", postedBy: MOCKED_USERS[1]},
+  {tuit: "charlie's tuit", _id: "345", postedBy: MOCKED_USERS[2]}
 ];
 
 test('tuit list renders mocked', async () => {
